@@ -24,7 +24,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Ratatouille
+        Salesforce
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -33,7 +33,7 @@ function Copyright() {
 }
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '120vh',
   },
   image: {
     backgroundImage: `url(${Image})`,
@@ -66,11 +66,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     password: '',
     password2: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email,phone, password, password2 } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -80,12 +81,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, password });
+      register({ name, email,phone, password });
     }
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -124,6 +125,19 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name="email"
             autoComplete="email"
             value={email}
+            onChange={onChange}
+            autoFocus
+          />
+           <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="phone"
+            label="Phone number (+91)"
+            name="phone"
+            autoComplete="phone"
+            value={phone}
             onChange={onChange}
             autoFocus
           />

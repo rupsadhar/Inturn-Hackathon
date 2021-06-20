@@ -7,7 +7,9 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import { useEffect } from 'react';
-
+import Dashboard from './components/dashboard/Dashboard'
+import Otpplatform from './components/otp/Otpplatform'
+import QRcode from './components/qr/qrcode'
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
@@ -37,6 +39,9 @@ const App = () => {
             <Switch>
             <Route exact path='/register' component={Register}/ >
             <Route exact path='/login' component={Login}/ >
+            <Route exact path='/dashboard' component={Dashboard}/ >
+            <Route exact path='/otp' component={Otpplatform}/ >
+            <Route exact path='/otpqr' component={QRcode}/ >
 
             </Switch>
           </section>
