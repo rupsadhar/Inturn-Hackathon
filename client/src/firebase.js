@@ -1,12 +1,12 @@
 import firebase from 'firebase';
  
 const config = {
-    apiKey: "AIzaSyCDNUvAhd_5ETGr1Y9S6olvybgTJmzCSAY",
-    authDomain: "inturn-41311.firebaseapp.com",
-    projectId: "inturn-41311",
-    storageBucket: "inturn-41311.appspot.com",
-    messagingSenderId: "507002412991",
-    appId: "1:507002412991:web:c3e057b4aecc58b39a8b0a"
+    apiKey: "AIzaSyD7mkHEYY8o0m9IGKiRgkq1t2pNSkEdsWU",
+    authDomain: "inturn-hackathon.firebaseapp.com",
+    projectId: "inturn-hackathon",
+    storageBucket: "inturn-hackathon.appspot.com",
+    messagingSenderId: "829544427722",
+    appId: "1:829544427722:web:59ab0c75b9cbaccf3c0433"
 };
  
 firebase.initializeApp(config);

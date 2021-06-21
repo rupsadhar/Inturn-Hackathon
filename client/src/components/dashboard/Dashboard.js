@@ -84,7 +84,7 @@ export default function Dashboard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Company records
+            Employee records
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Login to your portal using OTP and QRcode
@@ -119,11 +119,11 @@ export default function Dashboard() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-      
+      <Link to='/notes' >
         <Button size="small" color="primary">
           Open
         </Button>
-       
+       </Link>
       </CardActions>
     </Card>
           </Paper>

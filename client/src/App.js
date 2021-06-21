@@ -4,17 +4,13 @@ import React,{ Fragment} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
 import { useEffect } from 'react';
-import Dashboard from './components/dashboard/Dashboard'
-import Otpplatform from './components/otp/Otpplatform'
-import QRcode from './components/qr/qrcode'
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import { LOGOUT } from './actions/types';
+import Routes from './components/routing/Routes';
 
 const App = () => {
   useEffect(() => {
@@ -34,21 +30,16 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <Route exact path='/' component={Landing}/ >
-          <section className="container">
+          
+          <section >
             <Switch>
-            <Route exact path='/register' component={Register}/ >
-            <Route exact path='/login' component={Login}/ >
-            <Route exact path='/dashboard' component={Dashboard}/ >
-            <Route exact path='/otp' component={Otpplatform}/ >
-            <Route exact path='/otpqr' component={QRcode}/ >
-
+            <Route exact path="/" component={Landing} />
+              <Route component={Routes} />
             </Switch>
           </section>
-      </Fragment>
+        </Fragment>
       </Router>
-      </Provider>
-  
+    </Provider>
   )
 };
 
