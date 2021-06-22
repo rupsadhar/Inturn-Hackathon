@@ -11,6 +11,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
@@ -224,6 +225,13 @@ img {
   margin: 1.5rem 0;
 }
 
+.otp{
+  visibility: hidden;
+}
+
+.qrcode{
+  visibility: hidden;
+}
 /* Overlay */
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
@@ -348,6 +356,7 @@ button {
   justify-content: center;
   text-align: center;
 }
+
 
 /* Profiles Page */
 .profile {

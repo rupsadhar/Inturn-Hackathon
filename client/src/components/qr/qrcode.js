@@ -2,6 +2,7 @@
 import Button from '@material-ui/core/Button';
 import QrReader from 'react-qr-reader';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import firebase from '../../firebase';
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,11 +14,14 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Image from '../../img/login.png';
+import Handleclick from '../otp/Handleclick';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 let check=false;
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '100vh'
   },
   image: {
     backgroundImage: `url(${Image})`,
@@ -45,17 +49,26 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-function handleScan(data){
+function handleScan(data,id){
+    console.log(data);
+    //console.log(user);
     if (data) {
       document.getElementById('qr_result').textContent = "QR Content: " + data;
-      if(data==="Rushabh is awesome" && check){
-      document.getElementById('company');
+      // if(data===user){
+      
+      if(data===id){
+        document.getElementById('qrcode').style.visibility="hidden";
+      document.getElementById('res').style.visibility="visible";
       }
+      // }
+      return data;
     }
+    
   }
 function handleError(err) {
     console.error(err);
   }
+ 
 function handleClick(){
     console.log("hello");
     //console.log(phone)
@@ -87,9 +100,26 @@ function handleClick(){
 //   },
 // }));
 
-export default function ContainedButtons() {
+const Qrcode=({auth:{user}})=> {
   const classes = useStyles();
+  console.log(user._id);
+  const onSub = (e)=>{
+    Handleclick(user.phone);
+}
+  const handleFirst =(data)=>{
+    while(handleScan(data,user._id)===null){
+    var x=handleScan(data,user._id);
+    console.log("hello"+x)
+    break;
+    }
+    
+    if(x===user._id)
+    {
+      document.getElementById('result').style.visibility="visible";
+    }
+  }
   return (
+    <div >
     <Grid container component="main" className={classes.root}>
     <CssBaseline />
     <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -101,33 +131,34 @@ export default function ContainedButtons() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <div id="recaptcha"></div>
-        <Button variant="contained" color="primary" onClick={handleClick}>
+        <div id="otpqr">
+        <div id="recaptcha-container"></div>
+        <Button variant="contained" color="primary" onClick={onSub}>
           Verify
         </Button>
-        <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="otp"
-            label="otp"
-            name="OTPcode"
-            autoComplete="email"
-
-            autoFocus
-          />
-          
-        <label id="verify"> 
+        <label id="sent"> 
         </label>
+        </div>
+
        <div>
-       <QrReader
-         delay={10}
-         onError={handleError}
-         onScan={handleScan}
-         style={{ width: '100%' }}
-       />
+       <label id="verify"> 
+        </label>
        <label id="qr_result"></label>
+       <div id="res" className="otp">
+        <Link to='/company' >
+        <Button size="small" color="primary">
+          Move to employee reocrds
+        </Button>
+        </Link>
+        </div>
+        <div id="qrcode">
+       <QrReader
+         delay={200}
+         onError={handleError}
+         onScan={handleFirst}
+         style={{ width: '100%' }, {visibility:"hidden"}}
+       ></QrReader>
+       </div>
        {/* <div id="company">
        <Redirect to="/company" />
        </div> */}
@@ -135,26 +166,17 @@ export default function ContainedButtons() {
       </div>
     </Grid>
   </Grid>
+  </div>
   );
-  return (
-      <section>
-    <div className={classes.root}>
-        <div id="recaptcha"></div>
-      <Button variant="contained" color="primary" onClick={handleClick}>
-        Get otp
-      </Button>
-      <label id="verify"> 
-      </label>
-    </div>
-       <div>
-       <QrReader
-         delay={300}
-         onError={handleError}
-         onScan={handleScan}
-         style={{ width: '100%' }}
-       />
-       <label id="qr_result"></label>
-       </div>
-       </section>
-  );
+  
 }
+Qrcode.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+ });
+
+  export default connect(mapStateToProps)(
+    Qrcode  );

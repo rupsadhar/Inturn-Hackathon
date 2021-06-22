@@ -14,8 +14,12 @@ import Image from '../../img/login.png';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-var check=false;
-console.log(check);
+import handleclick from './Handleclick'
+import { Link } from 'react-router-dom';
+import Handleclick from './Handleclick';
+//var check=false;
+
+//console.log(check);
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -55,36 +59,7 @@ function red(){
 }
 
 
-function handleClick() {
-    //console.log("hello");
-    //console.log(phone);
-    //var duration = 3000; 
-//in milliseconds. therefore 3 seconds. 
-//which may either late or early
 
-    let recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    //document.getElementById('button-one').textContent="Click to get otp";
-    let number = "+919000065663";
-    //console.log(number);
-    firebase.auth().signInWithPhoneNumber(number, recaptcha)
-      .then((e) => {
-        let code = prompt("Enter your OTP");
-        if(code === null) return;
-        e.confirm(code)
-          .then((result) => {
-            console.log(result.user, 'user');
-            document.getElementById('verify').textContent = "User verified";
-            //document.getElementById('emailpage');
-            check=true;
-
-             
-          })
-          .catch((error) => {
-            console.log(error);
-            document.getElementById('verify').textContent = "Incorrect OTP";
-          })
-      })
-  }
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -93,11 +68,15 @@ function handleClick() {
 //     },
 //   },
 // }));
-const Otpplatform= (check)=> {
+const Otpplatform= ({auth:{user}})=> {
   const classes = useStyles();
-  console.log(check);
-  
-  //console.log(user.phone);
+  //const [check, setText] = useState(false);
+  console.log(user.phone);
+  const onSub = (e)=>{
+      Handleclick(user.phone);
+  }
+  //document.getElementById("result").style.visibility = "hidden";
+
   return (
     <Grid container component="main" className={classes.root}>
     <CssBaseline />
@@ -108,13 +87,18 @@ const Otpplatform= (check)=> {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Email Sign in
         </Typography>
+        <div>
+          To access email we need to verify your Phone number!
+        </div>
         <div id="recaptcha-container"></div>
-        <Button variant="contained" color="primary" onClick={handleClick}>
+        <Button variant="contained" color="primary" onClick={onSub}>
           Verify
         </Button>
-        <TextField
+        <label id="sent"> 
+        </label>
+        {/* <TextField
             variant="outlined"
             margin="normal"
             required
@@ -125,17 +109,17 @@ const Otpplatform= (check)=> {
             autoComplete="email"
 
             autoFocus
-          />
+          /> */}
           
         <label id="verify"> 
         </label>
-        console.log(check);
-        <div >
-          {check?
-          <Redirect to="/email" />: <label></label>}
-        
-          </div>
-
+        <div id="result" className="otp">
+        <Link to='/email' >
+        <Button size="small" color="primary">
+          Move to email
+        </Button>
+        </Link>
+        </div>
        
       </div>
     </Grid>
@@ -154,16 +138,15 @@ const Otpplatform= (check)=> {
   // );
 }
 
-// Otpplatform.propTypes = {
-//   auth: PropTypes.object.isRequired
-// };
+Otpplatform.propTypes = {
+  auth: PropTypes.object.isRequired
+};
 
-// const mapStateToProps = (state) => ({
-//   auth: state.auth,
-// });
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+ });
 
-// export default connect(mapStateToProps)(
-//   Otpplatform
-// );
+  export default connect(mapStateToProps)(
+    Otpplatform  );
 
-export default Otpplatform 
+//export default Otpplatform 
