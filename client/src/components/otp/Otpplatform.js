@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import Image from '../../img/login.png';
+import Image from '../../img/email.gif';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -90,7 +90,10 @@ const Otpplatform= ({auth:{user}})=> {
           Email Sign in
         </Typography>
         <div>
+        <Typography component="h1" variant="subtitle1" align="center">
           To access email we need to verify your Phone number!
+          </Typography>
+          <br></br>
         </div>
         <div id="recaptcha-container"></div>
         <Button variant="contained" color="primary" onClick={onSub}>

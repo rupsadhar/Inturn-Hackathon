@@ -48,13 +48,13 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
           To do today
         </Typography>
         <Typography variant="h5" component="h2">
-         Fix a Meeting with Mark
+         Fix a Meeting with Mark Richards
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="primary">
           11am
         </Typography>
         <Typography variant="body2" component="p">
@@ -68,13 +68,13 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
         To do today
         </Typography>
         <Typography variant="h5" component="h2">
           Fix a meeting with manager
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="primary">
           3pm
         </Typography>
         <Typography variant="body2" component="p">
@@ -90,13 +90,13 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
         To do today
         </Typography>
         <Typography variant="h5" component="h2">
           Take the Security Trailhead
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="primary">
           4pm
         </Typography>
         <Typography variant="body2" component="p">
@@ -114,17 +114,17 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
           To do today
         </Typography>
         <Typography variant="h5" component="h2">
-         Fix a Meeting with Mark
+         Desktop Yoga
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="primary">
           11am
         </Typography>
         <Typography variant="body2" component="p">
-          Need to discuss
+          For art of mindfulness
         </Typography>
       </CardContent>
     </Card>
@@ -134,17 +134,17 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
         To do today
         </Typography>
         <Typography variant="h5" component="h2">
-          Fix a meeting with manager
+          Fix a meeting with mentor
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="primary">
           3pm
         </Typography>
         <Typography variant="body2" component="p">
-          Need to discuss V2MoM
+          Need to discuss project
         
         </Typography>
       </CardContent>
@@ -156,18 +156,17 @@ export default function Notes() {
           <Paper className={classes.paper}>
           <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
         To do today
         </Typography>
         <Typography variant="h5" component="h2">
-          Take the Security Trailhead
+          Connect with intern
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          4pm
+        <Typography className={classes.pos} color="primary">
+          5pm
         </Typography>
         <Typography variant="body2" component="p">
-          Need to take it asap
-          
+          For coffee table conversation
         </Typography>
       </CardContent>
       

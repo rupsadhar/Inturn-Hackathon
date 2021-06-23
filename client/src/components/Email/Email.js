@@ -1,4 +1,4 @@
-import "./styles.css"
+import "./sample.css"
 import React from 'react'
  
 export default function Email() {
@@ -9,7 +9,7 @@ export default function Email() {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sample.css" />
     <title>Final - Gmail Clone</title>
   </head>
   <body>

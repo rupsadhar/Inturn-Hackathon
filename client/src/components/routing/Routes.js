@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Register from '../auth/Register';
 import Login from '../auth/Login';
-//import Alert from '../layout/Alert';
+import Alert from '../layout/Alert';
 import Dashboard from '../dashboard/Dashboard';
 import Email from '../Email/Email'
 import Notes from '../Notes/Notes'
@@ -11,11 +11,13 @@ import Company from '../Company/Company'
 import PrivateRoute from '../routing/PrivateRoute';
 import Otpplatform from '../otp/Otpplatform';
 import qrcode from '../qr/qrcode'
+
 // import Admin from '../admin/Admin'
 
 const Routes = props => {
   return (
     <section className="container">
+      <Alert/>
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />

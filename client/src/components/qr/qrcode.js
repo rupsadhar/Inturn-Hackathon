@@ -13,8 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import Image from '../../img/login.png';
-import Handleclick from '../otp/Handleclick';
+import Image from '../../img/company.gif';
+import Handleclick from './Handleclickforqr';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -53,7 +53,7 @@ function handleScan(data,id){
     console.log(data);
     //console.log(user);
     if (data) {
-      document.getElementById('qr_result').textContent = "QR Content: " + data;
+      //document.getElementById('qr_result').textContent = "QR Content: " + data;
       // if(data===user){
       
       if(data===id){
@@ -69,28 +69,7 @@ function handleError(err) {
     console.error(err);
   }
  
-function handleClick(){
-    console.log("hello");
-    //console.log(phone)
-    let recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha');
-    let number = "+918961523486";
-    firebase.auth().signInWithPhoneNumber(number, recaptcha)
-      .then((e) => {
-        let code = prompt("Enter your OTP");
-        if(code == null) return;
-        e.confirm(code)
-          .then((result) => {
-            console.log(result.user, 'user');
-            document.getElementById('verify').textContent = "User verified";
-            check=true;
-            
-          })
-          .catch((error) => {
-            console.log(error);
-            document.getElementById('verify').textContent = "Incorrect OTP";
-          })
-      })
-  }
+
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -102,8 +81,10 @@ function handleClick(){
 
 const Qrcode=({auth:{user}})=> {
   const classes = useStyles();
+  //document.getElementById('qrcode').style.visibility="hidden";
   console.log(user._id);
   const onSub = (e)=>{
+    //document.getElementById('otpqr').style.visibility="hidden";
     Handleclick(user.phone);
 }
   const handleFirst =(data)=>{
@@ -143,7 +124,6 @@ const Qrcode=({auth:{user}})=> {
        <div>
        <label id="verify"> 
         </label>
-       <label id="qr_result"></label>
        <div id="res" className="otp">
         <Link to='/company' >
         <Button size="small" color="primary">
@@ -151,12 +131,12 @@ const Qrcode=({auth:{user}})=> {
         </Button>
         </Link>
         </div>
-        <div id="qrcode">
+        <div id="qrcode" style={{visibility:'hidden'}}>
        <QrReader
          delay={200}
          onError={handleError}
          onScan={handleFirst}
-         style={{ width: '100%' }, {visibility:"hidden"}}
+         style={{ width: '100%' }}
        ></QrReader>
        </div>
        {/* <div id="company">

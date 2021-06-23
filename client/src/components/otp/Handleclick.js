@@ -27,8 +27,8 @@ function Handleclick(phone) {
             document.getElementById('verify').textContent = "user verified";
             
             document.getElementById('result').style.visibility="visible";
-            document.getElementById('otpqr').style.visibility="hidden";
-            document.getElementById('qrcode').style.visibility="visible";
+            //document.getElementById('otpqr').style.visibility="hidden";
+            //document.getElementById('qrcode').style.visibility="visible";
            
             //document.getElementById('emailpage').toggleAttribute()
             //return( <Redirect to="/email" />);
